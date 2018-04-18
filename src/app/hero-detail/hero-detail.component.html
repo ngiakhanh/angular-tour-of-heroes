@@ -1,11 +1,24 @@
 <div *ngIf="hero">
     <h2>{{ hero.name | uppercase }} Details</h2>
-    <div><span>id: </span>{{hero.id}}</div>
-    <div>
-        <label>name:
-            <input [(ngModel)]="hero.name" placeholder="name"/>
-          </label>
+    <div><span>Id: </span>{{hero.id}}</div>
+
+    <div class="form-group">
+        <div>
+            <label for="input_name">Name</label>
+            <input [(ngModel)]="hero.name" type="name" class="form-control" id="input_name" aria-describedby="nameHelp" placeholder="Enter name">
+        </div>
     </div>
-    <button (click)="goBack()">go back</button>
-    <button (click)="save()">save</button>
+    <div class="form-group row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label for="input_age">Age</label>
+            <input [(ngModel)]="hero.age" type="age" class="form-control" id="input_age" aria-describedby="ageHelp" placeholder="Enter age">
+            <small id="ageHelp" class="form-text text-muted">We'll never share your age with anyone else.</small>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <button (click)="goBack()" type="submit" class="btn btn-primary">Back</button>
+    <button (click)="save()" type="submit" class="btn btn-primary">Save</button>
+
 </div>
