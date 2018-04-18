@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class HeroService {
 
-    private heroesUrl = 'api/heroes';
+    private heroesUrl = 'http://localhost:8080/api/users';
 
     constructor(
         private http: HttpClient,
@@ -37,7 +37,8 @@ export class HeroService {
     }
 
     updateHero(hero: Hero): Observable<any> {
-        return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+        const url = `${this.heroesUrl}/${hero.id}`; 
+        return this.http.put<Hero>(url, hero, httpOptions).pipe(
             tap(_ => this.log(`updated hero id=${hero.id}`)),
             catchError(this.handleError<any>('updateHero'))
         );
