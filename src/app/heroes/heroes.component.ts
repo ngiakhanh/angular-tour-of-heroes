@@ -23,13 +23,16 @@ export class HeroesComponent implements OnInit {
             .subscribe(heroes => this.heroes = heroes);
     }
 
-    add(name: string): void {
+    add(id: string, name: string, age: string): void {
         name = name.trim();
-        if (!name) { return; }
-        this.heroService.addHero({ name } as Hero)
+        id = id.trim();
+        age = age.trim();
+        if (!name||!id||!age||   isNaN(Number(id))  ||   isNaN(Number(age))  ) { return; }
+        this.heroService.addHero({ id: parseInt(id), name: name, age: parseInt(age) } as Hero)
             .subscribe(hero => {
                 this.heroes.push(hero);
             });
+        this.getHeroes();
     }
 
     delete(hero: Hero): void {

@@ -1,13 +1,21 @@
 <h2>My Heroes</h2>
 
-<div>
-    <label>Hero name:
-    <input #heroName />
-  </label>
+
+<div class="form-group">
+    <label for="input_id">Hero Id
+    <input #heroId class="form-control" id="input_id" aria-describedby="idHelp" placeholder="Enter id"/>
+    </label>
+
+    <label for="input_name">Hero Name
+    <input #heroName class="form-control" id="input_name" aria-describedby="nameHelp" placeholder="Enter name"/>
+    </label>
+
+    <label for="input_age">Hero Age
+    <input #heroAge class="form-control" id="input_age" aria-describedby="ageHelp" placeholder="Enter age"/>
+    </label>
+
     <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(heroName.value); heroName.value=''">
-    Add
-  </button>
+    <button (click)="add(heroId.value, heroName.value, heroAge.value); heroName.value=''; heroId.value=''; heroAge.value=''" type="add" class="btn btn-primary">Add</button>
 </div>
 
 <ul class="heroes">
