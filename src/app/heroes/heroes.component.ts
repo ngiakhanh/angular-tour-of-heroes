@@ -32,7 +32,7 @@ export class HeroesComponent implements OnInit {
             .subscribe(hero => {
                 this.heroes.push(hero);
             });
-        this.getHeroes();
+        location.reload();
     }
 
     delete(hero: Hero): void {
